@@ -1,3 +1,3 @@
 # Bolb
-Bolb repo for bolb project
-Bolb gaem!!!
+We need some artists for bolb sprite maek!
+
