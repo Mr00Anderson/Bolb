@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class CameraUtilities {
 
+    //Basic camera that follows the player
     public static void lockOnTarget(Camera camera, Vector2 target) {
         Vector3 position = camera.position;
         position.x = target.x;
@@ -16,6 +17,7 @@ public class CameraUtilities {
         camera.update();
     }
 
+    //Basic Camera that lags behing the player but catches up
     public static void InterpolateToTarget(Camera camera, Vector2 target) {
         // a + (b - a) * lerp factor
         Vector3 position = camera.position;
@@ -24,6 +26,7 @@ public class CameraUtilities {
         camera.position.set(position);
         camera.update();
     }
+
 
     public static void lockAverageBetweenTargets(Camera camera, Vector2 targetA, Vector2 targetB) {
         Vector3 position = camera.position;

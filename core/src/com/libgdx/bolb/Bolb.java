@@ -2,33 +2,30 @@ package com.libgdx.bolb;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
+import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
+import com.libgdx.bolb.States.Menu;
 
 public class Bolb extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-	}
+    SpriteBatch batch;
+    private GameStateManager gsm;
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(MathUtils.random(0,2),  MathUtils.random(0,2),  MathUtils.random(0,2),  MathUtils.random(0,2)); // disco
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 150, 150);
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
+    @Override
+    public void create() {
+        batch = new SpriteBatch();
+        gsm = new GameStateManager();
+        gsm.push(new Menu(gsm));
+
+    }
+
+    @Override
+    public void render() {
+        gsm.update(Gdx.graphics.getDeltaTime());
+        gsm.render(batch);
+    }
+
+    @Override
+    public void dispose() {
+        batch.dispose();
+    }
 }
