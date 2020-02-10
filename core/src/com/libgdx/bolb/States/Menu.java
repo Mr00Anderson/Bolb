@@ -55,7 +55,7 @@ public class Menu extends State {
         Play = assetManager.get(PLAY);
 
 
-        final CustomActor Pbutton = new CustomActor(new TextureRegion(Play),160,80,100,200);
+        final CustomActor Pbutton = new CustomActor(new TextureRegion(Play),160,80,100,200, true);
         Pbutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

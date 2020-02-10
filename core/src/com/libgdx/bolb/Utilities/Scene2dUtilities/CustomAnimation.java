@@ -28,6 +28,28 @@ public class CustomAnimation extends Actor {
         CustomAnimation.this.setPosition(x,y);
     }
 
+    public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y, boolean CenteredOrigin) {
+        this.region = region;
+        this.frameCount = frameCount;
+        this.cycleTime = cycleTime;
+        this.animation = new Animation(region,frameCount,cycleTime);
+        CustomAnimation.this.setSize(width,height);
+        CustomAnimation.this.setPosition(x,y);
+        if(CenteredOrigin = true){
+            CustomAnimation.this.setOrigin(CustomAnimation.this.getWidth()/2, CustomAnimation.this.getHeight()/2);
+        }
+    }
+
+    public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y, float originX, float originY) {
+        this.region = region;
+        this.frameCount = frameCount;
+        this.cycleTime = cycleTime;
+        this.animation = new Animation(region,frameCount,cycleTime);
+        CustomAnimation.this.setSize(width,height);
+        CustomAnimation.this.setPosition(x,y);
+        CustomAnimation.this.setOrigin(originX,originY);
+    }
+
 
     @Override
     public void draw(Batch batch, float parentAlpha) {

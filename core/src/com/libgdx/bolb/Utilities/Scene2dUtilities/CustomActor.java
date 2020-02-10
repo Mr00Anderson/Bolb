@@ -18,6 +18,22 @@ public class CustomActor extends Actor {
         CustomActor.this.setPosition(x,y);
     }
 
+    public CustomActor(TextureRegion region, int width, int height, int x, int y, boolean CenteredOrigin) {
+        this.region = region;
+        CustomActor.this.setSize(width,height);
+        CustomActor.this.setPosition(x,y);
+        if(CenteredOrigin = true){
+            CustomActor.this.setOrigin(CustomActor.this.getWidth()/2, CustomActor.this.getHeight()/2);
+        }
+    }
+
+    public CustomActor(TextureRegion region, int width, int height, int x, int y, boolean CenteredOrigin, float originX, float originY) {
+        this.region = region;
+        CustomActor.this.setSize(width,height);
+        CustomActor.this.setPosition(x,y);
+        CustomActor.this.setOrigin(originX,originY);
+    }
+
 
 
     @Override
