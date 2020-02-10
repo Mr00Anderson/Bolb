@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
 import com.libgdx.bolb.Management.GameStateManagement.State;
 import com.libgdx.bolb.Utilities.CustomActor;
+import com.libgdx.bolb.Utilities.CustomAnimation;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.libgdx.bolb.Utilities.General.ClearScreen;
@@ -25,27 +26,27 @@ public class Menu extends State {
 
     private static final String YOUTUBE = "Buttons/Youtube.png";
     private static final String PLAY = "Buttons/Play.png";
+    private static final String BLOB = "Entities/BlobAnimation.png";
 
 
-    private Texture Youtube, Play, Info;
+    private Texture Youtube, Play, Blob;
     private Stage stage;
     private AssetManager assetManager;
 
     public Menu(GameStateManager gsm) {
         super(gsm);
-        Youtube = new Texture("Buttons/Youtube.png");
-        Play = new Texture("Buttons/Play.png");
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         assetManager = new AssetManager();
 //        assetManager.getLogger().setLevel(Logger.DEBUG);
 
-
+        assetManager.load(BLOB, Texture.class);
         assetManager.load(YOUTUBE, Texture.class);
         assetManager.load(PLAY, Texture.class);
         // blocks until all resources are loaded into memory
         assetManager.finishLoading();
 
         // get assets
+        Blob = assetManager.get(BLOB);
         Youtube = assetManager.get(YOUTUBE);
         Play = assetManager.get(PLAY);
 
@@ -58,8 +59,6 @@ public class Menu extends State {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Pbutton.clearActions();
-                Gdx.app.log("", String.valueOf(x));
-                Gdx.app.log("", String.valueOf(y));
                 Pbutton.addAction(rotateBy(60, 0.5f));
             }
         });
@@ -72,15 +71,28 @@ public class Menu extends State {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Ybutton.clearActions();
-                Gdx.app.log("", String.valueOf(x));
-                Gdx.app.log("", String.valueOf(y));
                 Ybutton.addAction(rotateBy(60, 0.5f));
             }
         });
 
+
+        final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(Blob),3,0.4f);
+        YAnimation.setSize(160,90);
+        YAnimation.setPosition(300,300);
+
+        YAnimation.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                YAnimation.clearActions();
+                YAnimation.addAction(rotateBy(60, 0.5f));
+            }
+        });
+
+
         stage = new Stage(new ExtendViewport(800, 480));
         stage.addActor(Ybutton);
         stage.addActor(Pbutton);
+        stage.addActor(YAnimation);
         Gdx.input.setInputProcessor(stage);
 
 
