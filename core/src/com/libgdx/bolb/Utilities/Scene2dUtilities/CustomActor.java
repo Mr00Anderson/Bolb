@@ -12,9 +12,12 @@ public class CustomActor extends Actor {
 
     private final TextureRegion region;
 
-    public CustomActor(TextureRegion region) {
+    public CustomActor(TextureRegion region, int width, int height, int x, int y) {
         this.region = region;
+        CustomActor.this.setSize(width,height);
+        CustomActor.this.setPosition(x,y);
     }
+
 
 
     @Override

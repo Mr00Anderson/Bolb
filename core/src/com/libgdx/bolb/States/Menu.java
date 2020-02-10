@@ -55,10 +55,7 @@ public class Menu extends State {
         Play = assetManager.get(PLAY);
 
 
-        final CustomActor Pbutton = new CustomActor(new TextureRegion(Play));
-        Pbutton.setSize(160, 80);
-        Pbutton.setPosition(100, 200);
-
+        final CustomActor Pbutton = new CustomActor(new TextureRegion(Play),160,80,100,200);
         Pbutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -67,10 +64,7 @@ public class Menu extends State {
             }
         });
 
-        final CustomActor Ybutton = new CustomActor(new TextureRegion(Youtube));
-        Ybutton.setSize(160, 80);
-        Ybutton.setPosition(500, 200);
-
+        final CustomActor Ybutton = new CustomActor(new TextureRegion(Youtube),160,80,500,200);
         Ybutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -80,10 +74,7 @@ public class Menu extends State {
         });
 
 
-        final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(Blob),3,0.4f);
-        YAnimation.setSize(160,90);
-        YAnimation.setPosition(300,300);
-
+        final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(Blob),3,0.4f,160,90,300,300);
         YAnimation.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -124,7 +115,8 @@ public class Menu extends State {
 
     @Override
     public void dispose() {
-
+    stage.dispose();
+    assetManager.dispose();
     }
 
 }

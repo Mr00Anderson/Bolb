@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Logger;
 import com.libgdx.bolb.Utilities.Animation;
 
@@ -18,11 +19,13 @@ public class CustomAnimation extends Actor {
     private final float cycleTime;
     private final Animation animation;
 
-    public CustomAnimation(TextureRegion region, int frameCount, float cycleTime) {
+    public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y) {
         this.region = region;
         this.frameCount = frameCount;
         this.cycleTime = cycleTime;
         this.animation = new Animation(region,frameCount,cycleTime);
+        CustomAnimation.this.setSize(width,height);
+        CustomAnimation.this.setPosition(x,y);
     }
 
 
