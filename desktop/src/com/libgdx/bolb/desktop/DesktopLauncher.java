@@ -2,7 +2,7 @@ package com.libgdx.bolb.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.libgdx.bolb.Bolb;
+import com.libgdx.bolb.Bolb.Bolb;
 
 import static com.libgdx.bolb.Utilities.General.FPS;
 import static com.libgdx.bolb.Utilities.General.HEIGHT;

@@ -1,4 +1,4 @@
-package com.libgdx.bolb;
+package com.libgdx.bolb.Bolb;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
