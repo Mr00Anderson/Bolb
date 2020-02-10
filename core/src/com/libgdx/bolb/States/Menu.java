@@ -2,21 +2,25 @@ package com.libgdx.bolb.States;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
 import com.libgdx.bolb.Management.GameStateManagement.State;
-import com.libgdx.bolb.Utilities.CustomActor;
-import com.libgdx.bolb.Utilities.CustomAnimation;
+import com.libgdx.bolb.Utilities.Scene2dUtilities.CustomActor;
+import com.libgdx.bolb.Utilities.Scene2dUtilities.CustomAnimation;
 
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.libgdx.bolb.Utilities.General.ClearScreen;
 
@@ -33,7 +37,7 @@ public class Menu extends State {
     private Stage stage;
     private AssetManager assetManager;
 
-    public Menu(GameStateManager gsm) {
+    public Menu(final GameStateManager gsm) {
         super(gsm);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         assetManager = new AssetManager();
@@ -84,9 +88,10 @@ public class Menu extends State {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 YAnimation.clearActions();
-                YAnimation.addAction(rotateBy(60, 0.5f));
+
             }
         });
+
 
 
         stage = new Stage(new ExtendViewport(800, 480));
@@ -100,16 +105,17 @@ public class Menu extends State {
 
     @Override
     protected void HandleInput() {
-
+        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){Gdx.app.exit();}
     }
 
     @Override
     public void update(float dt) {
-
+        HandleInput();
     }
 
     @Override
     public void render(SpriteBatch sb) {
+        update(Gdx.graphics.getDeltaTime());
         ClearScreen(Color.LIME);
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();

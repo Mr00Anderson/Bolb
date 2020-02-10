@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Utilities;
+package com.libgdx.bolb.Utilities.Scene2dUtilities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Logger;
+import com.libgdx.bolb.Utilities.Animation;
 
+//Animation for scene2d stages
 public class CustomAnimation extends Actor {
 
     private static final Logger log = new Logger(CustomAnimation.class.getName(), Logger.DEBUG);

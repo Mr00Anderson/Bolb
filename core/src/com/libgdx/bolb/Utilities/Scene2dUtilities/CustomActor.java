@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Utilities;
+package com.libgdx.bolb.Utilities.Scene2dUtilities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
