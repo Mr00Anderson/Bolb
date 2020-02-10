@@ -48,10 +48,10 @@ public class CameraUtilities {
     }
 
     public static boolean searchFocalPoints(OrthographicCamera camera, Array<Vector2> focalPoints, Vector2 target, float threshold) {
-        for(Vector2 point : focalPoints) {
-            if(target.dst(point) < threshold) {
+        for (Vector2 point : focalPoints) {
+            if (target.dst(point) < threshold) {
                 float newZoom = (target.dst(point) / threshold) + .2f;
-                camera.zoom = camera.zoom + ((newZoom > 1? 1 : newZoom) - camera.zoom) * .1f;
+                camera.zoom = camera.zoom + ((newZoom > 1 ? 1 : newZoom) - camera.zoom) * .1f;
                 CameraUtilities.InterpolateToTarget(camera, point);
                 return true;
             }

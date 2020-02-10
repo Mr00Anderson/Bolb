@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -30,7 +29,6 @@ public class Menu extends State {
 
     private Texture Youtube, Play, Info;
     private Stage stage;
-    private CustomActor Ybutton, Pbutton;
     private AssetManager assetManager;
 
     public Menu(GameStateManager gsm) {
@@ -39,7 +37,7 @@ public class Menu extends State {
         Play = new Texture("Buttons/Play.png");
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         assetManager = new AssetManager();
-        assetManager.getLogger().setLevel(Logger.DEBUG);
+//        assetManager.getLogger().setLevel(Logger.DEBUG);
 
 
         assetManager.load(YOUTUBE, Texture.class);
@@ -84,7 +82,6 @@ public class Menu extends State {
         stage.addActor(Ybutton);
         stage.addActor(Pbutton);
         Gdx.input.setInputProcessor(stage);
-
 
 
     }

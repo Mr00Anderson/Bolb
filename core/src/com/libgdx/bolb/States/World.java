@@ -7,13 +7,8 @@ import com.libgdx.bolb.Management.GameStateManagement.State;
 public class World extends State {
 
 
-
-    public World(GameStateManager gsm){
+    public World(GameStateManager gsm) {
         super(gsm);
-
-
-
-
 
 
     }

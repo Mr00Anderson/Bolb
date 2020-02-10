@@ -6,6 +6,11 @@ import com.badlogic.gdx.graphics.GL20;
 
 public class General {
 
+    public static final String TITLE = "Bolb";
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 480;
+    public static final int FPS = 60;
+
     public static void ClearScreen() {
         //Clear screen to black
         ClearScreen(Color.BLACK);
@@ -19,11 +24,5 @@ public class General {
 
 
     }
-
-
-    public static final String TITLE = "Bolb";
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 480;
-    public static final int FPS = 60;
 
 }

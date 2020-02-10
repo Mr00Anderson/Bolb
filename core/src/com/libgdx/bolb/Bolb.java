@@ -7,7 +7,7 @@ import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
 import com.libgdx.bolb.States.Menu;
 
 public class Bolb extends ApplicationAdapter {
-    SpriteBatch batch;
+    private SpriteBatch batch;
     private GameStateManager gsm;
 
     @Override
