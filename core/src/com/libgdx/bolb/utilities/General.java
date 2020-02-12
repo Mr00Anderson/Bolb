@@ -10,6 +10,7 @@ public class General {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 480;
     public static final int FPS = 60;
+    public static final float PPM = 32;
 
     public static void ClearScreen() {
         //Clear screen to black
