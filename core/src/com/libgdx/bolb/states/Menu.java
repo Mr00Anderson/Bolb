@@ -1,9 +1,8 @@
-package com.libgdx.bolb.States;
+package com.libgdx.bolb.states;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,46 +13,34 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
-import com.libgdx.bolb.Management.GameStateManagement.State;
-import com.libgdx.bolb.Utilities.Scene2dUtilities.CustomActor;
-import com.libgdx.bolb.Utilities.Scene2dUtilities.CustomAnimation;
+import com.libgdx.bolb.management.BolbManager;
+import com.libgdx.bolb.management.states.GameStateManager;
+import com.libgdx.bolb.management.states.State;
+import com.libgdx.bolb.utilities.scene2d.CustomActor;
+import com.libgdx.bolb.utilities.scene2d.CustomAnimation;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
-import static com.libgdx.bolb.Utilities.General.ClearScreen;
+import static com.libgdx.bolb.utilities.General.ClearScreen;
 
 public class Menu extends State {
 
     private static final Logger log = new Logger(Menu.class.getName(), Logger.DEBUG);
 
-    private static final String YOUTUBE = "Buttons/Youtube.png";
-    private static final String PLAY = "Buttons/Play.png";
-    private static final String BLOB = "Entities/BlobAnimation.png";
-
-
     private Texture Youtube, Play, Blob;
     private Stage stage;
-    private AssetManager assetManager;
 
     public Menu(final GameStateManager gsm) {
         super(gsm);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
-        assetManager = new AssetManager();
-//        assetManager.getLogger().setLevel(Logger.DEBUG);
 
-        assetManager.load(BLOB, Texture.class);
-        assetManager.load(YOUTUBE, Texture.class);
-        assetManager.load(PLAY, Texture.class);
-        // blocks until all resources are loaded into memory
-        assetManager.finishLoading();
-
+        gsm.assetManager.loadMenu();
+        
         // get assets
-        Blob = assetManager.get(BLOB);
-        Youtube = assetManager.get(YOUTUBE);
-        Play = assetManager.get(PLAY);
-
+        Blob = gsm.assetManager.get(BolbManager.BLOB);
+        Youtube = gsm.assetManager.get(BolbManager.YOUTUBE);
+        Play = gsm.assetManager.get(BolbManager.PLAY);
 
         final CustomActor Pbutton = new CustomActor(new TextureRegion(Play),160,80,100,200, true);
         Pbutton.addListener(new ClickListener() {
@@ -116,7 +103,8 @@ public class Menu extends State {
     @Override
     public void dispose() {
     stage.dispose();
-    assetManager.dispose();
+    gsm.assetManager.disposeMenu();
+    //assetManager.dispose();
     }
 
 }

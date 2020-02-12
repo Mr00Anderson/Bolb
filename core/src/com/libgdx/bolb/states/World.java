@@ -1,8 +1,8 @@
-package com.libgdx.bolb.States;
+package com.libgdx.bolb.states;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.libgdx.bolb.Management.GameStateManagement.GameStateManager;
-import com.libgdx.bolb.Management.GameStateManagement.State;
+import com.libgdx.bolb.management.states.GameStateManager;
+import com.libgdx.bolb.management.states.State;
 
 public class World extends State {
 

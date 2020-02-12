@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Utilities;
+package com.libgdx.bolb.utilities;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;

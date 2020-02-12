@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Utilities;
+package com.libgdx.bolb.utilities;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
