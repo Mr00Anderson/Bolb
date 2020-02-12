@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Logger;
 
 public class BolbManager extends AssetManager {
 
@@ -12,7 +13,7 @@ public class BolbManager extends AssetManager {
 	public static final AssetDescriptor<Texture> BLOB = new AssetDescriptor<Texture>("Entities/BlobAnimation.png", Texture.class);
 
 	public BolbManager() {
-//      assetManager.getLogger().setLevel(Logger.DEBUG);
+     BolbManager.this.getLogger().setLevel(Logger.DEBUG);
 	}
 
 	public void loadMenu() {
