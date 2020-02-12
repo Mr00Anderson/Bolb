@@ -1,23 +1,24 @@
 package com.libgdx.bolb.management;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
 public class BolbManager extends AssetManager {
 
-	public static final String YOUTUBE = "Buttons/Youtube.png";
-	public static final String PLAY = "Buttons/Play.png";
-	public static final String BLOB = "Entities/BlobAnimation.png";
+	public static final AssetDescriptor<Texture> YOUTUBE = new AssetDescriptor<Texture>("Buttons/Youtube.png", Texture.class);
+	public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Play.png", Texture.class);
+	public static final AssetDescriptor<Texture> BLOB = new AssetDescriptor<Texture>("Entities/BlobAnimation.png", Texture.class);
 
 	public BolbManager() {
 //      assetManager.getLogger().setLevel(Logger.DEBUG);
 	}
 
 	public void loadMenu() {
-		load(BLOB, Texture.class);
-		load(YOUTUBE, Texture.class);
-		load(PLAY, Texture.class);
+		load(BLOB);
+		load(YOUTUBE);
+		load(PLAY);
 		// blocks until all resources are loaded into memory
 		finishLoading();
 	}
@@ -28,10 +29,10 @@ public class BolbManager extends AssetManager {
 		unloadAsset(PLAY);
 	}
 
-	private void unloadAsset(String asset) {
-		if (isLoaded(asset)) {
-			for (int i = getReferenceCount(asset); i > 0; --i)
-				unload(asset);
+	private void unloadAsset(AssetDescriptor asset) {
+		if (isLoaded(asset.fileName)) {
+			for (int i = getReferenceCount(asset.fileName); i > 0; --i)
+				unload(asset.fileName);
 			finishLoading();
 			Gdx.app.log("BolbManager", "Unloaded: " + asset);
 		}

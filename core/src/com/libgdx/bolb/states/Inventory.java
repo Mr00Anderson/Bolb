@@ -11,7 +11,7 @@ public class Inventory extends State {
     }
 
     @Override
-    protected void HandleInput() {
+    protected void handleInput() {
 
     }
 

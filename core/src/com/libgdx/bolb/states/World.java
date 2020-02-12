@@ -15,7 +15,7 @@ public class World extends State {
 
 
     @Override
-    protected void HandleInput() {
+    protected void handleInput() {
 
     }
 
