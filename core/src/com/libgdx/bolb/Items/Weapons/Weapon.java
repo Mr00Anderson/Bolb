@@ -1,24 +1,18 @@
 package com.libgdx.bolb.Items.Weapons;
 
-public class Weapon {
+public abstract class Weapon {
+    private String name;
+    private int damage;
 
-    public String name;
-    public int damage;
-    public float reloadspeed;
-
-    public Weapon(String name, int damage, float reloadspeed){
-
-    this.name = name;
-    this.damage = damage;
-    this.reloadspeed = reloadspeed;
-
+    public Weapon(String name, int damage){
+        this.name = name;
+        this.damage = damage;
     }
 
-    public String GetName(){
+    public String getName(){
         return name;
     }
-    public int GetDamage(){return damage;}
-    public float getReloadspeed() {
-        return reloadspeed;
+    public int getDamage(){
+        return damage;
     }
 }

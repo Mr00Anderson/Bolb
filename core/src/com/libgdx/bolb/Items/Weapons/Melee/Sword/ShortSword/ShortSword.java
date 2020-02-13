@@ -2,7 +2,7 @@ package com.libgdx.bolb.Items.Weapons.Melee.Sword.ShortSword;
 
 import com.libgdx.bolb.Items.Weapons.Melee.Sword.Sword;
 
-public class ShortSword extends Sword {
+public class ShortSword {
 
     //Distance travelled by sword
     public float jab;
@@ -11,7 +11,7 @@ public class ShortSword extends Sword {
     public float jabspeed;
 
     public ShortSword(String name, int damage, float reloadspeed, float jab, float jabspeed) {
-        super(name, damage, reloadspeed);
+        //super(name, damage, reloadspeed);
         this.jab = jab;
         this.jabspeed = jabspeed;
 
