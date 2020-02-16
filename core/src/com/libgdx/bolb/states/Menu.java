@@ -52,8 +52,8 @@ public class Menu extends State {
 		ClickListener listener = menuListener();
 
 		
-		final CustomActor playButton = new CustomActor(new TextureRegion(play), play.getWidth(), play.getHeight(), -play.getWidth(), play.getHeight(), true);
-		playButton.addAction(Actions.moveTo(10, play.getHeight(), 0.5f));
+		final CustomActor playButton = new CustomActor(new TextureRegion(play), play.getWidth()*4, play.getHeight()*4, -play.getWidth() - 100, settings.getHeight(), true);
+		playButton.addAction(Actions.moveTo(10, settings.getHeight(), 0.5f));
 		playButton.setName("play");
 		playButton.addListener(listener);
 

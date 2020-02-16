@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Logger;
 public class BolbManager extends AssetManager {
 
 	public static final AssetDescriptor<Texture> YOUTUBE = new AssetDescriptor<Texture>("Buttons/Youtube.png", Texture.class);
-	public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Sword.png", Texture.class);
+	public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Rapier.png", Texture.class);
 	public static final AssetDescriptor<Texture> SETTINGS = new AssetDescriptor<Texture>("Buttons/Sword2.png", Texture.class);
 	public static final AssetDescriptor<Texture> BLOB = new AssetDescriptor<Texture>("Entities/BlobAnimation.png", Texture.class);
 

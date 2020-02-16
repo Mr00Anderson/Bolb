@@ -12,6 +12,10 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class ObjectTranslator {
 
+    /**
+    * Translate rectangular and line object layers from tiled into box2d bodies for collision
+     */
+
     public static void TranslateObjects(World world, MapObjects objects) {
         for(MapObject object : objects) {
             Shape shape;

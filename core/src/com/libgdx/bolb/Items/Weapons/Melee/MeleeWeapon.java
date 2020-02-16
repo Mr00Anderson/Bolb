@@ -37,6 +37,7 @@ public abstract class MeleeWeapon extends Weapon {
      * Creates a Box2d Body with a sensor to detect collisions with other bodies. If the player melee attacks
      * while this sensor is active, all colliding objects will be damaged.
      */
+
     private Body constructRangeBoxBody() {
         PolygonShape boxShape = new PolygonShape();
         boxShape.setAsBox(rangeBoxRadius/2, rangeBoxRadius/2);
