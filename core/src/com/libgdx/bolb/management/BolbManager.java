@@ -9,7 +9,8 @@ import com.badlogic.gdx.utils.Logger;
 public class BolbManager extends AssetManager {
 
 	public static final AssetDescriptor<Texture> YOUTUBE = new AssetDescriptor<Texture>("Buttons/Youtube.png", Texture.class);
-	public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Play.png", Texture.class);
+	public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Sword.png", Texture.class);
+	public static final AssetDescriptor<Texture> SETTINGS = new AssetDescriptor<Texture>("Buttons/Sword2.png", Texture.class);
 	public static final AssetDescriptor<Texture> BLOB = new AssetDescriptor<Texture>("Entities/BlobAnimation.png", Texture.class);
 
 	public BolbManager() {
@@ -19,6 +20,7 @@ public class BolbManager extends AssetManager {
 	public void loadMenu() {
 		load(BLOB);
 		load(YOUTUBE);
+		load(SETTINGS);
 		load(PLAY);
 		// blocks until all resources are loaded into memory
 		finishLoading();
@@ -27,10 +29,11 @@ public class BolbManager extends AssetManager {
 	public void disposeMenu() {
 		unloadAsset(BLOB);
 		unloadAsset(YOUTUBE);
+		unloadAsset(SETTINGS);
 		unloadAsset(PLAY);
 	}
 
-	private void unloadAsset(AssetDescriptor asset) {
+	private void unloadAsset(AssetDescriptor<?> asset) {
 		if (isLoaded(asset.fileName)) {
 			for (int i = getReferenceCount(asset.fileName); i > 0; --i)
 				unload(asset.fileName);

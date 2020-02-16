@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.libgdx.bolb.management.states.GameStateManager;
+import com.libgdx.bolb.states.Menu;
 import com.libgdx.bolb.states.World;
 
 public class Bolb extends ApplicationAdapter {
@@ -14,7 +15,7 @@ public class Bolb extends ApplicationAdapter {
 	public void create() {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
-		gsm.push(new World(gsm));
+		gsm.push(new Menu(gsm));
 	}
 
 	@Override

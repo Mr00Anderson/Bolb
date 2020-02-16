@@ -27,18 +27,14 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.libgdx.bolb.utilities.General.ClearScreen;
 
-public class Menu extends State {
+public class Settings extends State {
 
-	private static final Logger log = new Logger(Menu.class.getName(), Logger.DEBUG);
+	private static final Logger log = new Logger(Settings.class.getName(), Logger.DEBUG);
 
-	private Texture settings, play, blob;
+	private Texture back, blob;
 	private Stage stage;
 
-	
-
-	
-	
-	public Menu(final GameStateManager gsm) {
+	public Settings(final GameStateManager gsm) {
 		super(gsm);
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
@@ -46,29 +42,22 @@ public class Menu extends State {
 
 		// get assets
 		blob = gsm.assetManager.get(BolbManager.BLOB);
-		settings = gsm.assetManager.get(BolbManager.SETTINGS);
-		play = gsm.assetManager.get(BolbManager.PLAY);
+		back = gsm.assetManager.get(BolbManager.SETTINGS);
 
 		ClickListener listener = menuListener();
 
-		
-		final CustomActor playButton = new CustomActor(new TextureRegion(play), play.getWidth(), play.getHeight(), -play.getWidth(), play.getHeight(), true);
-		playButton.addAction(Actions.moveTo(10, play.getHeight(), 0.5f));
-		playButton.setName("play");
-		playButton.addListener(listener);
-
-		final CustomActor settingsButton = new CustomActor(new TextureRegion(settings), settings.getWidth(), settings.getHeight(), General.WIDTH + settings.getWidth(), settings.getHeight());
-		settingsButton.addAction(Actions.moveTo(General.WIDTH - settings.getWidth() - 10, settings.getHeight(), 0.5f));
-		settingsButton.setName("settings");
-		settingsButton.addListener(listener);
+		final CustomActor backButton = new CustomActor(new TextureRegion(back), back.getWidth(), back.getHeight(), General.WIDTH - back.getWidth() - 10, back.getHeight(), true);
+		backButton.addAction(Actions.moveTo(10, back.getHeight(), 0.5f));
+		backButton.setName("back");
+		backButton.addListener(listener);
 
 		final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(blob), 3, 0.4f, 160, 90, 300, 300);
 		YAnimation.setName("blob");
 		YAnimation.addListener(listener);
 
 		stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
-		stage.addActor(settingsButton);
-		stage.addActor(playButton);
+
+		stage.addActor(backButton);
 		stage.addActor(YAnimation);
 		Gdx.input.setInputProcessor(stage);
 
@@ -81,14 +70,8 @@ public class Menu extends State {
 			public void clicked(InputEvent event, float x, float y) {
 				Actor actor = event.getListenerActor();
 				switch (actor.getName()) {
-				case "play":
-					actor.clearActions();
-					actor.addAction(rotateBy(60, 0.5f));
-					break;
-				case "settings":
-					actor.clearActions();
-					actor.addAction(rotateBy(60, 0.5f));
-					gsm.push(new Settings(gsm));
+				case "back":
+					gsm.push(new Menu(gsm));
 					break;
 				case "blob":
 					actor.clearActions();
@@ -123,8 +106,7 @@ public class Menu extends State {
 
 	@Override
 	public void dispose() {
-		settings.dispose();
-		play.dispose();
+		back.dispose();
 		blob.dispose();
 		stage.dispose();
 		gsm.assetManager.disposeMenu();

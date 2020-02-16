@@ -9,6 +9,10 @@ public class General {
     public static final String TITLE = "Bolb";
     public static final int WIDTH = 800;
     public static final int HEIGHT = 480;
+    
+    final static int MID_X = General.WIDTH / 2;
+	final static int MID_Y = General.HEIGHT / 2;
+	
     public static final int FPS = 60;
     public static final float PPM = 32;
 
