@@ -71,7 +71,14 @@ public class Settings extends State {
 				Actor actor = event.getListenerActor();
 				switch (actor.getName()) {
 				case "back":
-					gsm.push(new Menu(gsm));
+					actor.addAction(Actions.sequence(
+							Actions.moveTo(-actor.getWidth(), actor.getHeight(), 0.25f), 
+							Actions.run(new Runnable() {
+						@Override
+						public void run() {
+							gsm.push(new Menu(gsm));
+						}})));
+					
 					break;
 				case "blob":
 					actor.clearActions();
