@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Items;
+package com.libgdx.bolb.items;
 
 public enum Item {
 

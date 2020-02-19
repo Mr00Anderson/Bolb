@@ -1,7 +1,7 @@
-package com.libgdx.bolb.Items.Weapons.Ranged.Bow;
+package com.libgdx.bolb.items.Weapons.Ranged.Bow;
 
 
-import com.libgdx.bolb.Items.Weapons.Ranged.Ranged;
+import com.libgdx.bolb.items.Weapons.Ranged.Ranged;
 
 public class Bow extends Ranged {
 

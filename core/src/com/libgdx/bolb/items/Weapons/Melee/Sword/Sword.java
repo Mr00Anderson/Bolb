@@ -1,6 +1,4 @@
-package com.libgdx.bolb.Items.Weapons.Melee.Sword;
-
-import com.libgdx.bolb.Items.Weapons.Melee.MeleeWeapon;
+package com.libgdx.bolb.items.Weapons.Melee.Sword;
 
 public class Sword{
 

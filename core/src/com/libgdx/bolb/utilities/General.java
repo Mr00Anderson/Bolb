@@ -29,5 +29,15 @@ public class General {
 
 
     }
+    public static void ClearScreen(int r, int g, int b, float a) {
+        //Clear screen to desired color
+            float R = r / 255;
+            float G = g / 255;
+            float B = b / 255;
+            Gdx.gl.glClearColor(R, G, B, a);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+
+    }
 
 }

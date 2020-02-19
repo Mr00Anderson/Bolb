@@ -1,6 +1,6 @@
-package com.libgdx.bolb.Items.Weapons.Ranged.Gun;
+package com.libgdx.bolb.items.Weapons.Ranged.Gun;
 
-import com.libgdx.bolb.Items.Weapons.Ranged.Ranged;
+import com.libgdx.bolb.items.Weapons.Ranged.Ranged;
 
 public class Gun extends Ranged {
 

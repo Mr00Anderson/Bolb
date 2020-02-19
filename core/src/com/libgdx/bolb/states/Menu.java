@@ -4,7 +4,9 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -12,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
@@ -31,15 +35,21 @@ public class Menu extends State {
 
 	private static final Logger log = new Logger(Menu.class.getName(), Logger.DEBUG);
 
-	private Texture settings, play, blob;
+	private int h;
+	private Texture settings, play, blob, button;
 	private Stage stage;
-
+	private Sprite BUTTON;
+	private Slider slider;
+	private Skin skin;
+	private Color color;
 	
 
 	
 	
 	public Menu(final GameStateManager gsm) {
 		super(gsm);
+
+		color = new Color();
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
 		gsm.assetManager.loadMenu();
@@ -48,6 +58,14 @@ public class Menu extends State {
 		blob = gsm.assetManager.get(BolbManager.BLOB);
 		settings = gsm.assetManager.get(BolbManager.SETTINGS);
 		play = gsm.assetManager.get(BolbManager.PLAY);
+		button = new Texture("Entities/Character-Animation.png");
+		BUTTON = new Sprite(button);
+		BUTTON.setSize(600 * 3, 80 * 3);
+		BUTTON.setPosition(300,150);
+		skin = new Skin();
+		skin.add("Slide", new Texture("Buttons/Play.png"));
+//		slider = new Slider(0f,1f,0.01f,false, skin);
+//		slider.setPosition(300,50);
 
 		ClickListener listener = menuListener();
 
@@ -69,8 +87,10 @@ public class Menu extends State {
 		stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
 		stage.addActor(settingsButton);
 		stage.addActor(playButton);
+//		stage.addActor(slider);
 		stage.addActor(YAnimation);
 		Gdx.input.setInputProcessor(stage);
+
 
 	}
 
@@ -100,11 +120,25 @@ public class Menu extends State {
 		return listener;
 	}
 
+
 	@Override
 	protected void handleInput() {
 		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 			Gdx.app.exit();
 		}
+		if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
+			h +=1;
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+			h-=1;
+		}
+		if (h > 360) {
+			h = 0 ;
+		} else if (h < 0){
+			h = 360;
+		}
+
+		color.fromHsv(h,1f,1f);
 	}
 
 	@Override
@@ -114,8 +148,12 @@ public class Menu extends State {
 
 	@Override
 	public void render(SpriteBatch sb) {
+
 		update(Gdx.graphics.getDeltaTime());
-		ClearScreen(Color.LIME);
+		ClearScreen(color);
+
+//		Gdx.gl.glClearColor(0.976f, 0.882f, 0.498f, 1);
+//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 

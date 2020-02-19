@@ -1,6 +1,4 @@
-package com.libgdx.bolb.Items.Weapons.Ranged;
-
-import com.libgdx.bolb.Items.Weapons.Weapon;
+package com.libgdx.bolb.items.Weapons.Ranged;
 
 public class Ranged {
     public int range;

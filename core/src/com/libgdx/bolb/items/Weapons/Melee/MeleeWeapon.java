@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Items.Weapons.Melee;
+package com.libgdx.bolb.items.Weapons.Melee;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.libgdx.bolb.Constants;
-import com.libgdx.bolb.Items.Weapons.Weapon;
+import com.libgdx.bolb.items.Weapons.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;

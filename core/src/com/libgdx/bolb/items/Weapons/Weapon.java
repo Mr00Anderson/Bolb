@@ -1,4 +1,4 @@
-package com.libgdx.bolb.Items.Weapons;
+package com.libgdx.bolb.items.Weapons;
 
 public abstract class Weapon {
     private String name;
