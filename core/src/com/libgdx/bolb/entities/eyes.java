@@ -15,17 +15,14 @@ public class eyes extends Actor {
     private final TextureRegion eyes;
     private final Animation eyesanimation;
     private final Texture EYES;
-    private int hue;
-    private float saturation, brightness;
+    public static int hue;
+    public static float saturation, brightness;
 
 
 
 
-    public eyes(int hue, float saturation, float brightness) {
+    public eyes() {
 
-        this.hue = hue;
-        this.saturation = saturation;
-        this.brightness = brightness;
 
         this.EYES = new Texture("Entities/Eyes-Animation.png");
 
@@ -37,6 +34,12 @@ public class eyes extends Actor {
 
         eyes.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
         eyes.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+    }
+
+    public  void setHSV(int hue,float saturation, float brightness) {
+        eyes.this.brightness = brightness;
+        eyes.this.saturation = saturation;
+        eyes.this.hue = hue;
     }
 
     @Override

@@ -16,16 +16,11 @@ public class lighting extends Actor {
     private final TextureRegion lighting;
     private final Animation lightinganimation;
     private final Texture LIGHTING;
-    private int hue;
-    private float saturation, brightness;
+    public static int hue;
+    public static float saturation, brightness;
 
 
-
-    public lighting(int hue, float saturation, float brightness) {
-
-        this.hue = hue;
-        this.saturation = saturation;
-        this.brightness = brightness;
+    public lighting() {
 
         this.LIGHTING = new Texture("Entities/Lighting-Animation.png");
 
@@ -38,6 +33,13 @@ public class lighting extends Actor {
         lighting.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
         lighting.this.setPosition(Constants.PlayerX,Constants.PlayerY);
 
+    }
+
+
+    public  void setHSV(int hue,float saturation, float brightness) {
+        lighting.this.brightness = brightness;
+        lighting.this.saturation = saturation;
+        lighting.this.hue = hue;
     }
 
     @Override

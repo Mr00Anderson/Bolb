@@ -8,26 +8,20 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.libgdx.bolb.Constants;
 import com.libgdx.bolb.utilities.Animation;
-import com.libgdx.bolb.utilities.scene2d.CustomActor;
-import com.libgdx.bolb.utilities.scene2d.CustomAnimation;
 
-public class character extends Actor {
+public class body extends Actor {
 
 
     private final TextureRegion body;
     private final Animation bodyanimation;
     private final Texture BODY;
-    private int hue;
-    private float saturation, brightness;
+    public static int hue;
+    public static float saturation, brightness;
 
 
 
 
-    public character(int hue, float saturation, float brightness) {
-
-        this.hue = hue;
-        this.saturation = saturation;
-        this.brightness = brightness;
+    public body() {
 
         this.BODY = new Texture("Entities/Character-Animation.png");
 
@@ -36,10 +30,18 @@ public class character extends Actor {
         this.bodyanimation = new Animation(body,Constants.PlayerFrames,Constants.PlayerCycleTime);
 
 
-        character.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
-        character.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+        com.libgdx.bolb.entities.body.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
+        com.libgdx.bolb.entities.body.this.setPosition(Constants.PlayerX,Constants.PlayerY);
 
     }
+
+    public  void setHSV(int hue,float saturation, float brightness) {
+        body.this.brightness = brightness;
+        body.this.saturation = saturation;
+        body.this.hue = hue;
+    }
+
+
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -48,7 +50,7 @@ public class character extends Actor {
 
         bodyanimation.update(Gdx.graphics.getDeltaTime());
         color.fromHsv(hue,saturation,brightness);
-        character.this.setColor(color);
+        com.libgdx.bolb.entities.body.this.setColor(color);
         batch.draw(bodyanimation.getFrame(),
                 getX(), getY(),
                 getOriginX(), getOriginY(),

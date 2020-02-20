@@ -15,17 +15,13 @@ public class hair extends Actor {
     private final TextureRegion hair;
     private final Animation hairanimation;
     private final Texture HAIR;
-    private int hue;
-    private float saturation, brightness;
+    public static int hue;
+    public static float saturation, brightness;
 
 
 
 
-    public hair(int hue, float saturation, float brightness) {
-
-        this.hue = hue;
-        this.saturation = saturation;
-        this.brightness = brightness;
+    public hair() {
 
         this.HAIR = new Texture("Entities/Hair-Animation.png");
 
@@ -36,6 +32,12 @@ public class hair extends Actor {
 
         hair.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
         hair.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+    }
+
+    public  void setHSV(int hue,float saturation, float brightness) {
+        hair.this.brightness = brightness;
+        hair.this.saturation = saturation;
+        hair.this.hue = hue;
     }
 
     @Override

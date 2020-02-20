@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.libgdx.bolb.entities.character;
+import com.libgdx.bolb.entities.body;
 import com.libgdx.bolb.entities.eyes;
 import com.libgdx.bolb.entities.hair;
 import com.libgdx.bolb.entities.lighting;
+import com.libgdx.bolb.entities.player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
 import com.libgdx.bolb.utilities.General;
@@ -19,10 +20,7 @@ import static com.libgdx.bolb.utilities.General.ClearScreen;
 public class Customization extends State {
 
     private Stage stage;
-    private character body;
-    private lighting lighting;
-    private eyes eyes;
-    private hair hair;
+    private player Player;
     private int hue;
     private float saturation, brightness;
 
@@ -30,16 +28,11 @@ public class Customization extends State {
     public Customization(GameStateManager gsm) {
         super(gsm);
 
-        body = new character(hue, saturation,brightness);
-        eyes = new eyes(hue,saturation,brightness);
-        lighting = new lighting(hue, saturation, brightness);
-        hair = new hair(hue, saturation, brightness);
+        Player = new player();
         stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
-        stage.addActor(lighting);
-        stage.addActor(body);
-        stage.addActor(eyes);
-        stage.addActor(hair);
+        Player.drawbody(stage);
         Gdx.input.setInputProcessor(stage);
+
 
     }
 
@@ -61,10 +54,10 @@ public class Customization extends State {
 
         //Saturation
         if (Gdx.input.isKeyPressed(Input.Keys.S) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            saturation +=0.01;
+            saturation +=0.0001;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            saturation-= 0.01;
+            saturation-= 0.0001;
         }
         if (saturation > 0) {
             saturation = 1 ;
@@ -77,7 +70,7 @@ public class Customization extends State {
             brightness +=0.01;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.B) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            brightness-= 0.01;
+            brightness -= 0.01;
         }
         if (brightness > 0) {
             brightness = 1 ;
@@ -91,6 +84,7 @@ public class Customization extends State {
     @Override
     public void update(float dt) {
         handleInput();
+        Player.setHSV(3,hue, saturation,brightness);
 
     }
 
