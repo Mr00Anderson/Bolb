@@ -23,8 +23,6 @@ public class CustomActor extends Actor {
         this.y = y;
         CustomActor.this.setSize(width, height);
         CustomActor.this.setPosition(x, y);
-//        x = preferences.getInteger("X");
-//        y = preferences.getInteger("Y");
     }
 
     public CustomActor(TextureRegion region, int width, int height, int x, int y, boolean CenteredOrigin) {
