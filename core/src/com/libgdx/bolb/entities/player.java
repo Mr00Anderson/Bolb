@@ -6,9 +6,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.libgdx.bolb.Constants;
 import com.libgdx.bolb.utilities.Animation;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 
 public class player {
 
@@ -16,17 +20,19 @@ public class player {
     private lighting lighting;
     private eyes eyes;
     private hair hair;
+    public int X;
+    public int Y;
+    private static int CurrentThing;
 
     public player() {
         body = new body();
         eyes = new eyes();
         lighting = new lighting();
         hair = new hair();
+
     }
 
     public void update(float dt) {
-
-
     }
 
     public void drawbody(Stage stage) {
@@ -36,14 +42,13 @@ public class player {
         stage.addActor(hair);
     }
 
-    public void setHSV(int part, int hue, float saturation, float brightness) {
-        if (part == 1) {
-            this.lighting.setHSV(hue, saturation, brightness);
-        } else if (part == 2) {
-            this.hair.setHSV(hue, saturation, brightness);
-        } else if (part == 3) {
+    public void setHSV(int hue, float saturation, float brightness) {
+        if (CurrentThing == 0) {
             this.body.setHSV(hue, saturation, brightness);
-        } else if (part == 4) {
+            this.lighting.setHSV(hue - 15, saturation, brightness);
+        } else if (CurrentThing == 1) {
+            this.hair.setHSV(hue, saturation, brightness);
+        } else if (CurrentThing == 2) {
             this.eyes.setHSV(hue, saturation, brightness);
         }
 
@@ -70,7 +75,7 @@ public class player {
 
 
             lighting.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
-            lighting.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+            lighting.this.setPosition(player.this.X,player.this.Y);
 
         }
 
@@ -123,7 +128,7 @@ public class player {
 
 
             body.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
-            body.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+            body.this.setPosition(player.this.X,player.this.Y);
 
         }
 
@@ -180,7 +185,7 @@ public class player {
 
 
             eyes.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
-            eyes.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+            eyes.this.setPosition(player.this.X,player.this.Y);
         }
 
         public  void setHSV(int hue,float saturation, float brightness) {
@@ -216,8 +221,8 @@ public class player {
         private final TextureRegion hair;
         private final Animation hairanimation;
         private final Texture HAIR;
-        private   int hue;
-        private   float saturation, brightness;
+        private int hue;
+        private float saturation, brightness;
 
 
 
@@ -232,7 +237,7 @@ public class player {
 
 
             hair.this.setSize(Constants.PlayerWidth,Constants.PlayerHeight);
-            hair.this.setPosition(Constants.PlayerX,Constants.PlayerY);
+            hair.this.setPosition(player.this.X,player.this.Y);
         }
 
         public  void setHSV(int hue,float saturation, float brightness) {
