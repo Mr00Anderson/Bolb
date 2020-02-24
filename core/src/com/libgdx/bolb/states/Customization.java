@@ -2,7 +2,6 @@ package com.libgdx.bolb.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -30,9 +29,9 @@ public class Customization extends State {
         super(gsm);
 
         Player = new Player();
-        hueSlide = new SliderButton(50,400,0.0f,360.0f,0.1f);
-        saturationSlide = new SliderButton(50,375,0.0f,1.0f,0.001f);
-        brightnessSlide = new SliderButton(50,350,0.0f,1.0f,0.001f);
+        hueSlide = new SliderButton(50, 400, 0.0f, 360.0f, 0.1f);
+        saturationSlide = new SliderButton(50, 375, 0.0f, 1.0f, 0.001f);
+        brightnessSlide = new SliderButton(50, 350, 0.0f, 1.0f, 0.001f);
 
         stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
         Player.drawbody(stage);
@@ -90,14 +89,13 @@ public class Customization extends State {
     }
 
 
-
     @Override
     public void update(float dt) {
         handleInput();
 
-        stage.getViewport().update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Player.update(dt);
-        Player.setHSV( (int)hueSlide.getValue() , saturationSlide.getValue(), brightnessSlide.getValue());
+        Player.setHSV((int) hueSlide.getValue(), saturationSlide.getValue(), brightnessSlide.getValue());
 //        Player.setHSV( (int)hueSlide.getValue()+15,  saturationSlide.getValue(), brightnessSlide.getValue());
 
     }

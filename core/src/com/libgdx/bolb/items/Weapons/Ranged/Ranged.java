@@ -10,7 +10,12 @@ public class Ranged {
         this.maxammo = maxammo;
     }
 
-    public int GetRange(){return range;}
-    public int GetMaxAmmo(){return maxammo;}
+    public int GetRange() {
+        return range;
+    }
+
+    public int GetMaxAmmo() {
+        return maxammo;
+    }
 
 }
