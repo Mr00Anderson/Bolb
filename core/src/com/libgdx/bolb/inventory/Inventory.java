@@ -2,9 +2,7 @@ package com.libgdx.bolb.inventory;
 
 import java.util.LinkedHashMap;
 
-import com.libgdx.bolb.items.Item;
-
-public class Inventory extends LinkedHashMap<Integer, Item> {
+public class Inventory extends LinkedHashMap<Integer, ItemSlot> {
 
 	private static final long serialVersionUID = -4882451612453340302L;
 	
