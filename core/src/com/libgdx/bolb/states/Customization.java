@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.libgdx.bolb.entities.player;
+import com.libgdx.bolb.entities.Player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
 import com.libgdx.bolb.utilities.General;
@@ -18,7 +18,7 @@ import static com.libgdx.bolb.utilities.General.ClearScreen;
 public class Customization extends State {
 
     private Stage stage;
-    private player Player;
+    private Player Player;
     private int hue;
     private float saturation, brightness;
     private SliderButton hueSlide;
@@ -29,7 +29,7 @@ public class Customization extends State {
     public Customization(GameStateManager gsm) {
         super(gsm);
 
-        Player = new player();
+        Player = new Player();
         hueSlide = new SliderButton(50,400,0.0f,360.0f,0.1f);
         saturationSlide = new SliderButton(50,375,0.0f,1.0f,0.001f);
         brightnessSlide = new SliderButton(50,350,0.0f,1.0f,0.001f);

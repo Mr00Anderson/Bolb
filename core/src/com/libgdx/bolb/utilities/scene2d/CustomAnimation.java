@@ -13,24 +13,19 @@ public class CustomAnimation extends Actor {
 
     private static final Logger log = new Logger(CustomAnimation.class.getName(), Logger.DEBUG);
 
-    private final TextureRegion region;
-    private final int frameCount;
-    private final float cycleTime;
+
     private final Animation animation;
 
+    private int hue;
+    private float saturation, brightness;
+    
     public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y) {
-        this.region = region;
-        this.frameCount = frameCount;
-        this.cycleTime = cycleTime;
         this.animation = new Animation(region,frameCount,cycleTime);
         CustomAnimation.this.setSize(width,height);
         CustomAnimation.this.setPosition(x,y);
     }
 
     public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y, boolean CenteredOrigin) {
-        this.region = region;
-        this.frameCount = frameCount;
-        this.cycleTime = cycleTime;
         this.animation = new Animation(region,frameCount,cycleTime);
         CustomAnimation.this.setSize(width,height);
         CustomAnimation.this.setPosition(x,y);
@@ -40,15 +35,17 @@ public class CustomAnimation extends Actor {
     }
 
     public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y, float originX, float originY) {
-        this.region = region;
-        this.frameCount = frameCount;
-        this.cycleTime = cycleTime;
         this.animation = new Animation(region,frameCount,cycleTime);
         CustomAnimation.this.setSize(width,height);
         CustomAnimation.this.setPosition(x,y);
         CustomAnimation.this.setOrigin(originX,originY);
     }
 
+    public  void setHSV(int hue,float saturation, float brightness) {
+        this.brightness = brightness;
+        this.saturation = saturation;
+        this.hue = hue;
+    }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -56,6 +53,8 @@ public class CustomAnimation extends Actor {
         batch.setColor(color);
 
         animation.update(Gdx.graphics.getDeltaTime());
+        color.fromHsv(hue,saturation,brightness);
+        this.setColor(color);
         batch.draw(animation.getFrame(),
                 getX(), getY(),
                 getOriginX(), getOriginY(),

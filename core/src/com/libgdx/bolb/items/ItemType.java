@@ -1,6 +1,6 @@
 package com.libgdx.bolb.items;
 
-public enum Item {
+public enum ItemType {
 
 	BROADSWORD,
 	DAGGER,

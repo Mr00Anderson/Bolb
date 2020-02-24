@@ -1,6 +1,8 @@
 package com.libgdx.bolb.items.Weapons;
 
-public abstract class Weapon {
+import com.libgdx.bolb.items.Item;
+
+public abstract class Weapon implements Item {
     private String name;
     private int damage;
 
