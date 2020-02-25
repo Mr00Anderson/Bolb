@@ -1,12 +1,10 @@
-package com.libgdx.bolb.Bolb;
+package com.libgdx.bolb.application;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.states.Customization;
-import com.libgdx.bolb.states.Menu;
-import com.libgdx.bolb.states.World;
 
 public class Bolb extends ApplicationAdapter {
 	private SpriteBatch batch;

@@ -1,9 +1,7 @@
-package com.libgdx.bolb.items.Weapons.Ranged.Bow;
+package com.libgdx.bolb.items.weapons.ranged.bow;
 
 
-import com.libgdx.bolb.items.Weapons.Ranged.Ranged;
-
-import java.sql.Savepoint;
+import com.libgdx.bolb.items.weapons.ranged.Ranged;
 
 public class Bow extends Ranged {
 

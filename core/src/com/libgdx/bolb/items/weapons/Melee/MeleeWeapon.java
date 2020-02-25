@@ -1,4 +1,4 @@
-package com.libgdx.bolb.items.Weapons.Melee;
+package com.libgdx.bolb.items.weapons.Melee;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -7,7 +7,8 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.libgdx.bolb.Constants;
-import com.libgdx.bolb.items.Weapons.Weapon;
+import com.libgdx.bolb.items.Rarity;
+import com.libgdx.bolb.items.weapons.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,8 @@ public abstract class MeleeWeapon extends Weapon {
     private List<Body> collidingBodies; //stores list of all bodies currently colliding with the melee range box
     //TODO store reference to the player?
 
-    public MeleeWeapon(String name, int damage, float rangeBoxRadius, Vector2 position, World world) {
-        super(name, damage);
+    public MeleeWeapon(String name, int damage, String description, Rarity rarity, float rangeBoxRadius, Vector2 position, World world) {
+        super(name, damage, description, rarity);
         this.rangeBoxRadius = rangeBoxRadius;
         this.position = position;
         this.world = world;

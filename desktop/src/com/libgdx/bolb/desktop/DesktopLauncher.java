@@ -7,7 +7,7 @@ import static com.libgdx.bolb.utilities.General.WIDTH;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.libgdx.bolb.Bolb.Bolb;
+import com.libgdx.bolb.application.Bolb;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

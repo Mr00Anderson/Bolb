@@ -13,7 +13,7 @@ public enum Rarity {
 
     int level;
 
-    private Rarity(int level) {
+    Rarity(int level) {
         this.level = level;
     }
 
