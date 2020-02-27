@@ -17,7 +17,6 @@ public class World extends State {
         super(gsm);
         stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
         Player.getPlayer().drawbody(stage);
-        Player.getPlayer().setPosition(500,200);
         Gdx.input.setInputProcessor(stage);
     }
 
