@@ -7,11 +7,12 @@ public enum Rarity {
     RARE(3),
     EPIC(4),
     LEGENDARY(5),
-    MYTHICAL(6),
-    FORBIDDEN(7),
-    TITAN(8);
+    SET(6),
+    MYTHICAL(7),
+    FORBIDDEN(8);
 
-    int level;
+    private final int level;
+
 
     Rarity(int level) {
         this.level = level;

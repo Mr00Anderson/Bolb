@@ -72,7 +72,7 @@ public class Settings extends State {
 							Actions.run(new Runnable() {
 						@Override
 						public void run() {
-							gsm.push(new Menu(gsm));
+							gsm.push(new Customization(gsm));
 						}})));
 					
 					break;

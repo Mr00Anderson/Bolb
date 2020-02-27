@@ -35,13 +35,10 @@ public class Menu extends State {
 
 	private static final Logger log = new Logger(Menu.class.getName(), Logger.DEBUG);
 
-	private int h;
 	private Texture settings, play, blob, button;
 	private Stage stage;
 	private Sprite BUTTON;
-	private Slider slider;
 	private Skin skin;
-	private Color color;
 	
 
 	
@@ -49,7 +46,6 @@ public class Menu extends State {
 	public Menu(final GameStateManager gsm) {
 		super(gsm);
 
-		color = new Color();
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
 		gsm.assetManager.loadMenu();
@@ -62,11 +58,6 @@ public class Menu extends State {
 		BUTTON = new Sprite(button);
 		BUTTON.setSize(600 * 3, 80 * 3);
 		BUTTON.setPosition(300,150);
-		skin = new Skin();
-		skin.add("Slide", new Texture("Buttons/Play.png"));
-//		slider = new Slider(0f,1f,0.01f,false, skin);
-//		slider.setPosition(300,50);
-
 		ClickListener listener = menuListener();
 
 		
@@ -82,12 +73,12 @@ public class Menu extends State {
 
 		final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(blob), 3, 0.4f, 160, 90, 300, 300);
 		YAnimation.setName("blob");
+		YAnimation.setHSV(150,1.0f,1.0f);
 		YAnimation.addListener(listener);
 
 		stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
 		stage.addActor(settingsButton);
 		stage.addActor(playButton);
-//		stage.addActor(slider);
 		stage.addActor(YAnimation);
 		Gdx.input.setInputProcessor(stage);
 
@@ -126,19 +117,6 @@ public class Menu extends State {
 		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 			Gdx.app.exit();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			h +=1;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			h-=1;
-		}
-		if (h > 360) {
-			h = 0 ;
-		} else if (h < 0){
-			h = 360;
-		}
-
-		color.fromHsv(h,1f,1f);
 	}
 
 	@Override
@@ -150,10 +128,8 @@ public class Menu extends State {
 	public void render(SpriteBatch sb) {
 
 		update(Gdx.graphics.getDeltaTime());
-		ClearScreen(color);
-
-//		Gdx.gl.glClearColor(0.976f, 0.882f, 0.498f, 1);
-//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClearColor(0.976f, 0.882f, 0.498f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 

@@ -22,7 +22,7 @@ public abstract class MeleeWeapon extends Weapon {
     //TODO store reference to the player?
 
     public MeleeWeapon(String name, int damage, String description, Rarity rarity, float rangeBoxRadius, Vector2 position, World world) {
-        super(name, damage, description, rarity);
+//        super(name, damage, description, rarity);
         this.rangeBoxRadius = rangeBoxRadius;
         this.position = position;
         this.world = world;

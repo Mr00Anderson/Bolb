@@ -8,7 +8,7 @@ public class Bow extends Ranged {
     public int chargetime;
 
     public Bow(String name, int damage, int range, int chargetime, int maxammo, float reloadspeed) {
-        super(name, damage, range, maxammo, reloadspeed);
+        super(range, maxammo, reloadspeed);
         this.chargetime = chargetime;
     }
 
