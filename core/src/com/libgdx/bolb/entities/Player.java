@@ -8,6 +8,8 @@ import com.libgdx.bolb.utilities.scene2d.CustomAnimation;
 
 public class Player {
 
+    public static final Player player = new Player();
+
     private final TextureRegion bodyRegion;
     private final Texture BODY;
     private CustomAnimation body;
@@ -24,11 +26,11 @@ public class Player {
     private final Texture HAIR;
     private CustomAnimation hair;
 
-    public int X;
-    public int Y;
+    public static int X;
+    public static int Y;
     private static int CurrentThing;
 
-    public Player() {
+    private Player() {
         this.LIGHTING = new Texture("Entities/Lighting-Animation.png");
         this.lightingRegion = new TextureRegion(LIGHTING);
 
@@ -47,6 +49,9 @@ public class Player {
         hair = new CustomAnimation(hairRegion, Constants.PlayerFrames, Constants.PlayerCycleTime, Constants.PlayerWidth, Constants.PlayerHeight, Player.this.X, Player.this.Y);
 
     }
+
+    public static Player getPlayer(){ return player;}
+
 
     public void update(float dt) {
     }

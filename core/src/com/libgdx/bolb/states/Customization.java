@@ -1,43 +1,56 @@
 package com.libgdx.bolb.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.libgdx.bolb.entities.Player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
 import com.libgdx.bolb.utilities.General;
 import com.libgdx.bolb.utilities.UI.SliderButton;
+import com.libgdx.bolb.utilities.scene2d.CustomActor;
 
 import static com.libgdx.bolb.utilities.General.ClearScreen;
 
 public class Customization extends State {
 
     private Stage stage;
-    private Player Player;
-    private int hue;
-    private float saturation, brightness;
-    private SliderButton hueSlide;
-    private SliderButton saturationSlide;
-    private SliderButton brightnessSlide;
-
+    private SliderButton hueSlide, saturationSlide, brightnessSlide;
+    private boolean isFinished;
+    public static float BRIGHTNESS;
+    public static float SATURATION;
+    public static int HUE;
 
     public Customization(GameStateManager gsm) {
         super(gsm);
 
-        Player = new Player();
+//        Player = new Player();
         hueSlide = new SliderButton(50, 400, 0.0f, 360.0f, 0.1f);
         saturationSlide = new SliderButton(50, 375, 0.0f, 1.0f, 0.001f);
         brightnessSlide = new SliderButton(50, 350, 0.0f, 1.0f, 0.001f);
 
+        Texture play = new Texture("Buttons/Youtube.png");
         stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
-        Player.drawbody(stage);
+
+        final CustomActor next = new CustomActor(new TextureRegion(play), 160, 80, 450, 100);
+        next.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                isFinished = true;
+            }
+        });
+
+        Player.getPlayer().drawbody(stage);
         stage.addActor(hueSlide);
         stage.addActor(saturationSlide);
         stage.addActor(brightnessSlide);
+        stage.addActor(next);
         Gdx.input.setInputProcessor(stage);
 
 
@@ -46,46 +59,13 @@ public class Customization extends State {
     @Override
     protected void handleInput() {
 
-        //Hue
-        if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            hue += 1;
+        if (isFinished) {
+            dispose();
+            HUE = (int) hueSlide.getValue();
+            SATURATION = saturationSlide.getValue();
+            BRIGHTNESS = brightnessSlide.getValue();
+            gsm.push(new World(gsm));
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.H) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            hue -= 1;
-        }
-        if (hue > 360) {
-            hue = 0;
-        } else if (hue < 0) {
-            hue = 360;
-        }
-
-        //Saturation
-        if (Gdx.input.isKeyPressed(Input.Keys.S) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            saturation += 0.0001;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.S) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            saturation -= 0.0001;
-        }
-        if (saturation > 0) {
-            saturation = 1;
-        } else if (saturation < 1) {
-            saturation = 0;
-        }
-
-        //Brightness
-        if (Gdx.input.isKeyPressed(Input.Keys.B) && Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            brightness += 0.01;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.B) && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            brightness -= 0.01;
-        }
-        if (brightness > 0) {
-            brightness = 1;
-        } else if (brightness < 1) {
-            brightness = 0;
-        }
-
-
     }
 
 
@@ -94,9 +74,8 @@ public class Customization extends State {
         handleInput();
 
         stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Player.update(dt);
-        Player.setHSV((int) hueSlide.getValue(), saturationSlide.getValue(), brightnessSlide.getValue());
-//        Player.setHSV( (int)hueSlide.getValue()+15,  saturationSlide.getValue(), brightnessSlide.getValue());
+        Player.getPlayer().update(dt);
+        Player.getPlayer().setHSV((int) hueSlide.getValue(), saturationSlide.getValue(), brightnessSlide.getValue());
 
     }
 
@@ -115,6 +94,9 @@ public class Customization extends State {
 
     @Override
     public void dispose() {
+
+
+
 
     }
 }
