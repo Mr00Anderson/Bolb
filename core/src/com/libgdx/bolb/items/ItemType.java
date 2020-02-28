@@ -2,42 +2,59 @@ package com.libgdx.bolb.items;
 
 public enum ItemType {
 
-    BROADSWORD,
-    DAGGER,
-    SHORTSWORD,
+	NULL(-1),
 
-    BOW,
-    GUN;
+	BROADSWORD, 
+	DAGGER, 
+	SHORTSWORD,
 
-    public boolean isMelee() {
-        switch (this) {
-            case BROADSWORD:
-                return true;
-            case DAGGER:
-                return true;
-            case SHORTSWORD:
-                return true;
-            default:
-                return false;
-        }
-    }
+	BOW, 
+	GUN;
 
-    public boolean isRanged() {
-        switch (this) {
-            case BOW:
-                return true;
-            case GUN:
-                return true;
-            default:
-                return false;
-        }
-    }
+	private final int maxStack;
 
-    public boolean isArmor() {
-        switch (this) {
-            //TODO add armor
-            default:
-                return false;
-        }
-    }
+	private ItemType() {
+		this(99);
+	}
+
+	private ItemType(int stack) {
+		this.maxStack = stack;
+	}
+
+	public boolean isMelee() {
+		switch (this) {
+		case BROADSWORD:
+			return true;
+		case DAGGER:
+			return true;
+		case SHORTSWORD:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	public boolean isRanged() {
+		switch (this) {
+		case BOW:
+			return true;
+		case GUN:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	public boolean isArmor() {
+		switch (this) {
+		// TODO add armor
+		default:
+			return false;
+		}
+	}
+
+	public int getMaxStackSize() {
+		return this.maxStack;
+
+	}
 }
