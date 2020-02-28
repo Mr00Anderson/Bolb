@@ -15,7 +15,6 @@ import com.libgdx.bolb.management.states.State;
 import com.libgdx.bolb.utilities.General;
 import com.libgdx.bolb.utilities.UI.SliderButton;
 import com.libgdx.bolb.utilities.scene2d.CustomActor;
-
 import static com.libgdx.bolb.utilities.General.ClearScreen;
 
 public class Customization extends State {
@@ -30,7 +29,6 @@ public class Customization extends State {
     public Customization(GameStateManager gsm) {
         super(gsm);
 
-//        Player = new Player();
         hueSlide = new SliderButton(50, 400, 0.0f, 360.0f, 0.1f);
         saturationSlide = new SliderButton(50, 375, 0.0f, 1.0f, 0.001f);
         brightnessSlide = new SliderButton(50, 350, 0.0f, 1.0f, 0.001f);
@@ -68,7 +66,6 @@ public class Customization extends State {
         }
     }
 
-
     @Override
     public void update(float dt) {
         handleInput();
@@ -89,14 +86,10 @@ public class Customization extends State {
         sb.begin();
         sb.end();
 
-
     }
 
     @Override
     public void dispose() {
-
-
-
 
     }
 }
