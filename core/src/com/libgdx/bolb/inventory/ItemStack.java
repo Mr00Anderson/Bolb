@@ -26,16 +26,18 @@ public class ItemStack {
 		return type;
 	}
 
-	public void setType(ItemType type) {
+	public ItemStack setType(ItemType type) {
 		this.type = type;
+		return this;
 	}
 
 	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public ItemStack setAmount(int amount) {
 		this.amount = amount;
+		return this;
 	}
 
 	public int getMaxStackSize() {
