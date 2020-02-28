@@ -111,6 +111,8 @@ public class Menu extends State {
     @Override
     public void update(float dt) {
         handleInput();
+
+        stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override

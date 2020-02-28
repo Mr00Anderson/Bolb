@@ -15,7 +15,6 @@ public class CustomAnimation extends Actor {
 
 
     private final Animation animation;
-
     private int hue;
     private float saturation, brightness;
 
@@ -36,6 +35,9 @@ public class CustomAnimation extends Actor {
         this.hue = hue;
     }
 
+    public Animation getAnimation() {
+        return animation;
+    }
     @Override
     public void draw(Batch batch, float parentAlpha) {
         Color color = getColor();
