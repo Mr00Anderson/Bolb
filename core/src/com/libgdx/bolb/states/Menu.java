@@ -60,7 +60,7 @@ public class Menu extends State {
         settingsButton.setName("settings");
         settingsButton.addListener(listener);
 
-        final CustomAnimation YAnimation = new CustomAnimation(new TextureRegion(blob), 3, 0.4f, 160, 90, 300, 300);
+        final CustomAnimation YAnimation = new CustomAnimation.Builder(new TextureRegion(blob)).xPosition(300).yPosition(300).width(160).height(90).build();
         YAnimation.setName("blob");
         YAnimation.setHSV(150, 1.0f, 1.0f);
         YAnimation.addListener(listener);

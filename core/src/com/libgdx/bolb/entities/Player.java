@@ -43,10 +43,12 @@ public class Player {
         this.HAIR = new Texture("Entities/Hair-Animation.png");
         this.hairRegion = new TextureRegion(HAIR);
 
-        body = new CustomAnimation(bodyRegion, Constants.PlayerFrames, Constants.PlayerCycleTime, Constants.PlayerWidth, Constants.PlayerHeight, Player.this.X, Player.this.Y);
-        eyes = new CustomAnimation(eyesRegion, Constants.PlayerFrames, Constants.PlayerCycleTime, Constants.PlayerWidth, Constants.PlayerHeight, Player.this.X, Player.this.Y);
-        lighting = new CustomAnimation(lightingRegion, Constants.PlayerFrames, Constants.PlayerCycleTime, Constants.PlayerWidth, Constants.PlayerHeight, Player.this.X, Player.this.Y);
-        hair = new CustomAnimation(hairRegion, Constants.PlayerFrames, Constants.PlayerCycleTime, Constants.PlayerWidth, Constants.PlayerHeight, Player.this.X, Player.this.Y);
+
+        body = new CustomAnimation.Builder(bodyRegion).xPosition(Player.this.X).yPosition(Player.this.Y).build();
+        eyes = new CustomAnimation.Builder(eyesRegion).xPosition(Player.this.X).yPosition(Player.this.Y).build();
+        lighting = new CustomAnimation.Builder(lightingRegion).xPosition(Player.this.X).yPosition(Player.this.Y).build();
+        hair = new CustomAnimation.Builder(hairRegion).xPosition(Player.this.X).yPosition(Player.this.Y).build();
+
 
     }
 
