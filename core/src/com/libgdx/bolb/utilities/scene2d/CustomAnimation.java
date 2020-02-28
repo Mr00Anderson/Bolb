@@ -18,10 +18,6 @@ public class CustomAnimation extends Actor {
 
     private int hue;
     private float saturation, brightness;
-    private TextureRegion region;
-    public int x, y, width, height;
-    public float OriginX, OriginY;
-    public boolean CenteredOrigin;
 
     public static class Builder {
         private final TextureRegion region;
@@ -80,13 +76,16 @@ public class CustomAnimation extends Actor {
             CustomAnimation.this.setOrigin(CustomAnimation.this.getWidth()/2, CustomAnimation.this.getHeight()/2);
         }
         CustomAnimation.this.setOrigin(builder.OriginX,builder.OriginY);
+
     }
+
+
+
     public CustomAnimation(TextureRegion region, int frameCount, float cycleTime, int width, int height, int x, int y) {
         this.animation = new Animation(region,frameCount,cycleTime);
         CustomAnimation.this.setSize(width,height);
         CustomAnimation.this.setPosition(x,y);
     }
-
 
     public  void setHSV(int hue,float saturation, float brightness) {
         this.brightness = brightness;
@@ -98,7 +97,6 @@ public class CustomAnimation extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         Color color = getColor();
         batch.setColor(color);
-
         animation.update(Gdx.graphics.getDeltaTime());
         color.fromHsv(hue,saturation,brightness);
         this.setColor(color);

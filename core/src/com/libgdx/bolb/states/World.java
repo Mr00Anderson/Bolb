@@ -1,6 +1,7 @@
 package com.libgdx.bolb.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,7 +32,6 @@ public class World extends State {
     public void update(float dt) {
         handleInput();
         Player.getPlayer().update(dt);
-
 
     }
 
