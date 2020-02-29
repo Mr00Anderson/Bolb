@@ -20,6 +20,8 @@ public class Player {
 
 	private Player() {
 
+		X = 125;
+		Y = -75;
 
 		this.LIGHTING = new Texture("Entities/Lighting-Animation.png");
 		this.lightingRegion = new TextureRegion(LIGHTING);
@@ -67,10 +69,6 @@ public class Player {
 		if(Gdx.input.isKeyPressed(Input.Keys.S)){Player.getPlayer().down();}
 		if(Gdx.input.isKeyPressed(Input.Keys.A)){Player.getPlayer().left();}
 		if(Gdx.input.isKeyPressed(Input.Keys.D)){Player.getPlayer().right();}
-		if(Gdx.input.isKeyPressed(Input.Keys.NUM_0)){CurrentThing = 0;}
-		if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){CurrentThing = 1;}
-		if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){CurrentThing = 2;}
-
 	}
 
 	private void up(){ Y += 6;}
@@ -86,19 +84,24 @@ public class Player {
 		stage.addActor(shine);
 	}
 
+	public void setCurrentThing(int val){
+		CurrentThing = val;
+	}
 
 
 	public void setHSV(int hue, float saturation, float brightness) {
-		if (CurrentThing == 0) {
+		if (CurrentThing == 1) {
 			this.body.setHSV(hue, saturation, brightness);
 			this.lighting.setHSV(hue - 15, saturation, brightness);
-		} else if (CurrentThing == 1) {
-			this.hair.setHSV(hue, saturation, brightness);
 		} else if (CurrentThing == 2) {
+			this.hair.setHSV(hue, saturation, brightness);
+		} else if (CurrentThing == 3) {
 			this.eyes.setHSV(hue, saturation, brightness);
 		}
 		this.shine.setHSV(0, 0, 1);
 
 	}
+	public int getPostionX(){return this.X + 200;}
+	public int getPostionY(){return this.Y + 170;}
 
 }
