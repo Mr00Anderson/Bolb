@@ -2,7 +2,7 @@ package com.libgdx.bolb.items;
 
 public enum ItemType {
 
-	NULL(-1),
+	EMPTY_SLOT(-1),
 
 	BROADSWORD, 
 	DAGGER, 
