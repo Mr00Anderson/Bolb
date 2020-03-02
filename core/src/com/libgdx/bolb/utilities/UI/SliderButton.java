@@ -14,7 +14,7 @@ public class SliderButton extends Slider {
 
     public SliderButton(int x, int y, float min, float max, float stepSize) {
         super(min, max, stepSize, false, getSliderStyle());
-        setBounds(15, 15, 128 * 5, 25);
+//        setBounds(15, 15, 128 * 5, 25);
         setPosition(x, y);
     }
 
