@@ -8,8 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.libgdx.bolb.entities.Player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
@@ -31,23 +35,24 @@ public class Customization extends State {
     public Customization(GameStateManager gsm) {
         super(gsm);
 
+
+
         hueSlide = new SliderButton(35, 75, 0.0f, 360.0f, 0.1f);
-        saturationSlide = new SliderButton(35, 55, 0.0f, 1.0f, 0.001f);
-        brightnessSlide = new SliderButton(35, 35, 0.0f, 1.0f, 0.001f);
+        saturationSlide = new SliderButton(35, 54, 0.0f, 1.0f, 0.001f);
+        brightnessSlide = new SliderButton(35, 33, 0.0f, 1.0f, 0.001f);
 
         Texture play = new Texture("Buttons/Youtube.png");
         Texture torsoButton = new Texture("Buttons/Torso-Button.png");
-        Texture torsoButtonBackground = new Texture("Buttons/Torso-Button-Background.png");
         Texture hairButton = new Texture("Buttons/Hair-Button.png");
-        Texture hairButtonBackground = new Texture("Buttons/Hair-Button-Background.png");
-        Texture eyesButton = new Texture("Buttons/Eyes-Button.png");
+        final Texture eyesButton = new Texture("Buttons/Eyes-Button.png");
         Texture UIHolder = new Texture("Buttons/UI-Holder.png");
 
         stage = new Stage(new ExtendViewport(General.WIDTH, General.HEIGHT));
 
-        final CustomActor uiholder = new CustomActor(new TextureRegion(UIHolder), 180, 270, 20, 20);
+        final CustomActor uiholder = new CustomActor(new TextureRegion(UIHolder), 220, 330, 20, 20);
+        final CustomActor holder = new CustomActor(new TextureRegion(UIHolder), 220, 330, 620, 20);
 
-        final CustomActor next = new CustomActor(new TextureRegion(play), 160, 80, 600, 30);
+        final CustomActor next = new CustomActor(new TextureRegion(play), 160, 80, 650, 50);
         next.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -56,8 +61,7 @@ public class Customization extends State {
         });
 
 
-        final CustomActor torsobuttonbackground = new CustomActor(new TextureRegion(torsoButtonBackground), 75, 50, 35, 100);
-        final CustomActor torsobutton = new CustomActor(new TextureRegion(torsoButton), 75, 50, 35, 100);
+        final CustomActor torsobutton = new CustomActor(new TextureRegion(torsoButton), 96, 64, 35, 100);
         torsobutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -65,7 +69,7 @@ public class Customization extends State {
             }
         });
 
-        final CustomActor eyesbutton = new CustomActor(new TextureRegion(eyesButton), 50, 24, 48, 152);
+        final CustomActor eyesbutton = new CustomActor(new TextureRegion(eyesButton), 96, 64, 35, 170);
         eyesbutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -73,8 +77,7 @@ public class Customization extends State {
             }
         });
 
-        final CustomActor hairbuttonbackground = new CustomActor(new TextureRegion(hairButtonBackground), 66, 34, 42, 179);
-        final CustomActor hairbutton = new CustomActor(new TextureRegion(hairButton), 66, 34, 42, 179);
+        final CustomActor hairbutton = new CustomActor(new TextureRegion(hairButton), 96, 64, 35, 240);
         hairbutton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -86,16 +89,17 @@ public class Customization extends State {
 
 
 
+
         Player.getPlayer().drawbody(stage);
         stage.addActor(uiholder);
+        stage.addActor(holder);
         uiholder.setColor(Color.GRAY);
+        holder.setColor(Color.GRAY);
 
         stage.addActor(hueSlide);
         stage.addActor(saturationSlide);
         stage.addActor(brightnessSlide);
-        stage.addActor(hairbuttonbackground);
         stage.addActor(hairbutton);
-        stage.addActor(torsobuttonbackground);
         stage.addActor(torsobutton);
         stage.addActor(eyesbutton);
         stage.addActor(next);
@@ -134,8 +138,6 @@ public class Customization extends State {
         ClearScreen(Color.TEAL);
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
-        sb.begin();
-        sb.end();
 
     }
 

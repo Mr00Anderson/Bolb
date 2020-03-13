@@ -55,8 +55,6 @@ public class CustomActor extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         Color color = getColor();
         batch.setColor(color);
-//        preferences.putFloat("X", CustomActor.this.getX());
-//        preferences.putFloat("Y", CustomActor.this.getY());
         batch.draw(region,
                 getX(), getY(),
                 getOriginX(), getOriginY(),
@@ -64,6 +62,5 @@ public class CustomActor extends Actor {
                 getScaleX(), getScaleY(),
                 getRotation()
         );
-//        preferences.flush();
     }
 }

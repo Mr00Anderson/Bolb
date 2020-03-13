@@ -14,8 +14,9 @@ public class SliderButton extends Slider {
 
     public SliderButton(int x, int y, float min, float max, float stepSize) {
         super(min, max, stepSize, false, getSliderStyle());
-//        setBounds(15, 15, 128 * 5, 25);
+        setBounds(0, 0, 192, 16);
         setPosition(x, y);
+
     }
 
     private static SliderStyle getSliderStyle() {
@@ -23,7 +24,7 @@ public class SliderButton extends Slider {
         sliderSkin = new Skin();
         sliderSkin.add("touchBackground", new Texture("Buttons/Slider.png"));
 
-        sliderSkin.add("touchKnob", new Texture("Buttons/Play.png"));
+        sliderSkin.add("touchKnob", new Texture("Buttons/Slider-Knob.png"));
 
         sliderStyle = new SliderStyle();
 
@@ -32,7 +33,6 @@ public class SliderButton extends Slider {
 
         sliderStyle.background = sliderBackground;
         sliderStyle.knob = sliderKnob;
-
         return sliderStyle;
     }
 

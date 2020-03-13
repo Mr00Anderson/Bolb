@@ -12,12 +12,13 @@ import com.libgdx.bolb.application.Bolb;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.foregroundFPS = FPS;
-		config.backgroundFPS = FPS;
+//		config.foregroundFPS = FPS;
+//		config.backgroundFPS = FPS;
+		config.vSyncEnabled = true;
 		config.title = TITLE;
 		config.width = WIDTH;
 		config.height = HEIGHT;
-		config.fullscreen = true;
+//		config.fullscreen = true;
 		new LwjglApplication(new Bolb(), config);
 	}
 }

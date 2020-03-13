@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.libgdx.bolb.entities.Player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
@@ -17,6 +17,7 @@ public class World extends State {
     private Stage stage;
     private ExtendViewport viewport;
     private OrthographicCamera cam;
+
 
     public World(GameStateManager gsm) {
         super(gsm);
@@ -38,16 +39,16 @@ public class World extends State {
     @Override
     public void update(float dt) {
         viewport.setCamera(cam);
+
         handleInput();
         Player.getPlayer().update(dt);
-
 
     }
 
     @Override
     public void render(SpriteBatch sb) {
         update(Gdx.graphics.getDeltaTime());
-        Gdx.gl.glClearColor(0.6f, 0.8f, 1, 1);
+        Gdx.gl.glClearColor(0.4f, 0.3f, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         cam.position.set(
@@ -56,15 +57,15 @@ public class World extends State {
                 0);
 
         cam.update();
+
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
-
 
 
     }
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
