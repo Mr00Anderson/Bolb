@@ -43,7 +43,7 @@ public class Menu extends State {
         blob = gsm.assetManager.get(BolbManager.BLOB);
         settings = gsm.assetManager.get(BolbManager.SETTINGS);
         play = gsm.assetManager.get(BolbManager.PLAY);
-        button = new Texture("Entities/Character-Animation.png");
+        button = new Texture("Entities/Player/Torso/Character-Animation.png");
         BUTTON = new Sprite(button);
         BUTTON.setSize(600 * 3, 80 * 3);
         BUTTON.setPosition(300, 150);

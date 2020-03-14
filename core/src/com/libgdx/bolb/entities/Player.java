@@ -2,10 +2,10 @@ package com.libgdx.bolb.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.libgdx.bolb.management.BolbManager;
 import com.libgdx.bolb.utilities.scene2d.CustomAnimation;
 import com.libgdx.bolb.utilities.scene2d.ParticleActor;
 
@@ -15,46 +15,29 @@ public class Player {
 
     public static final Player player = new Player();
 
-    private final TextureRegion bodyRegion, lightingRegion, eyesRegion, hairRegion, shineRegion, eyeshineRegion;
-    private final Texture BODY, LIGHTING, HAIR, EYES, SHINE, EYE_SHINE;
-    private CustomAnimation body, hair, eyes, lighting, shine, eyeshine;
+    private CustomAnimation body, hair, eyes, lighting, hairshine;
     private ParticleEffect runEffect;
     private ParticleActor runActor;
     private int X, Y, CurrentThing;
-    private boolean isMoving;
+    BolbManager bolbManager;
 
     private Player() {
+
+        bolbManager = new BolbManager();
+        bolbManager.loadPlayer();
 
         X = 180;
         Y = -0;
 
-        this.LIGHTING = new Texture("Entities/Lighting-Animation.png");
-        this.lightingRegion = new TextureRegion(LIGHTING);
-
-        this.SHINE = new Texture("Entities/Shine-Animation.png");
-        this.shineRegion = new TextureRegion(SHINE);
-
-        this.BODY = new Texture("Entities/Character-Animation.png");
-        this.bodyRegion = new TextureRegion(BODY);
-
-        this.EYES = new Texture("Entities/Eyes-Animation.png");
-        this.eyesRegion = new TextureRegion(EYES);
-
-        this.EYE_SHINE = new Texture("Entities/EyeShine-Animation.png");
-        this.eyeshineRegion = new TextureRegion(EYE_SHINE);
-
-        this.HAIR = new Texture("Entities/Hair-Animation.png");
-        this.hairRegion = new TextureRegion(HAIR);
 
         runEffect = new ParticleEffect();
         runEffect.load(Gdx.files.internal("Environment/Sparticle"), Gdx.files.internal("Environment"));
 
-        body = new CustomAnimation(bodyRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        eyes = new CustomAnimation(eyesRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        lighting = new CustomAnimation(lightingRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        hair = new CustomAnimation(hairRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        shine = new CustomAnimation(shineRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        eyeshine = new CustomAnimation(eyeshineRegion, 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        body = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Body)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        eyes = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Eyes)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        lighting = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Lighting)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        hair = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.JesterHair)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        hairshine = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.JesterHairShine)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
         runActor = new ParticleActor(runEffect, Player.this.X + 186, Player.this.Y + 120);
 
 
@@ -74,8 +57,7 @@ public class Player {
         eyes.setPosition(Player.this.X, Player.this.Y);
         hair.setPosition(Player.this.X, Player.this.Y);
         lighting.setPosition(Player.this.X, Player.this.Y);
-        shine.setPosition(Player.this.X, Player.this.Y);
-        eyeshine.setPosition(Player.this.X, Player.this.Y);
+        hairshine.setPosition(Player.this.X, Player.this.Y);
 
 
         if (Right() && Gdx.input.isKeyPressed(Input.Keys.D)) {
@@ -135,7 +117,7 @@ public class Player {
         stage.addActor(lighting);
         stage.addActor(eyes);
         stage.addActor(hair);
-        stage.addActor(shine);
+        stage.addActor(hairshine);
         stage.addActor(runActor);
     }
 
@@ -153,7 +135,7 @@ public class Player {
         Player.getPlayer().lighting.getAnimation().getFrame().flip(true, false);
         Player.getPlayer().hair.getAnimation().getFrame().flip(true, false);
         Player.getPlayer().eyes.getAnimation().getFrame().flip(true, false);
-        Player.getPlayer().shine.getAnimation().getFrame().flip(true, false);
+        Player.getPlayer().hairshine.getAnimation().getFrame().flip(true, false);
     }
 
     public void setCurrentThing(int val) {
@@ -180,7 +162,7 @@ public class Player {
         } else if (CurrentThing == 3) {
             this.eyes.setHSV(hue, saturation, brightness);
         }
-        this.shine.setHSV(0, 0, 1);
+        this.hairshine.setHSV(0, 0, 1);
 
     }
 
