@@ -16,7 +16,6 @@ public class Player {
     public static final Player player = new Player();
 
     private CustomAnimation body, hair, eyes, lighting, hairshine;
-    private ParticleEffect runEffect;
     private ParticleActor runActor;
     private int X, Y, CurrentThing;
     BolbManager bolbManager;
@@ -30,20 +29,18 @@ public class Player {
         Y = -0;
 
 
-        runEffect = new ParticleEffect();
+        ParticleEffect runEffect = new ParticleEffect();
         runEffect.load(Gdx.files.internal("Environment/Sparticle"), Gdx.files.internal("Environment"));
-
         body = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Body)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
         eyes = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Eyes)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
         lighting = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Lighting)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        hair = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.JesterHair)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
-        hairshine = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.JesterHairShine)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        hair = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.Bald)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
+        hairshine = new CustomAnimation(new TextureRegion(bolbManager.get(bolbManager.BaldShine)), 3, 0.4f, 455, 382, Player.this.X, Player.this.Y);
         runActor = new ParticleActor(runEffect, Player.this.X + 186, Player.this.Y + 120);
 
 
         runActor.getEffect().findEmitter("Sparticle").scaleSize(0.25f);
         runActor.getEffect().findEmitter("Sparticle").getTint().setColors(new float[]{1f, 0.67f, 0f, 1f});
-
     }
 
     public static Player getPlayer() {

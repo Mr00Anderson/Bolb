@@ -1,6 +1,7 @@
 package com.libgdx.bolb.utilities.scene2d;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -31,6 +32,10 @@ public class ParticleActor extends Actor {
 
         effect.start();
 
+    }
+
+    public void setColour(float[] RGB, String emitter){
+        effect.findEmitter(emitter).getTint().setColors(RGB);
     }
 
     public void pause(String emitter) {
