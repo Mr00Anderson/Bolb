@@ -12,6 +12,8 @@ public class BolbManager extends AssetManager {
     public static final AssetDescriptor<Texture> PLAY = new AssetDescriptor<Texture>("Buttons/Rapier.png", Texture.class);
     public static final AssetDescriptor<Texture> SETTINGS = new AssetDescriptor<Texture>("Buttons/Sword2.png", Texture.class);
     public static final AssetDescriptor<Texture> BLOB = new AssetDescriptor<Texture>("Entities/BlobAnimation.png", Texture.class);
+    public static final AssetDescriptor<Texture> Legs = new AssetDescriptor<Texture>("Entities/Player/Legs/Legs.png", Texture.class);
+    public static final AssetDescriptor<Texture> LegsAnimation = new AssetDescriptor<Texture>("Entities/Player/Legs/Legs-Animation.png", Texture.class);
 
     //Player
     public static final AssetDescriptor<Texture> Body = new AssetDescriptor<Texture>("Entities/Player/Torso/Character-Animation.png", Texture.class);
@@ -48,6 +50,8 @@ public class BolbManager extends AssetManager {
         load(Body);
         load(Eyes);
         load(Lighting);
+        load(Legs);
+        load(LegsAnimation);
         // blocks until all resources are loaded into memory
         finishLoading();
     }

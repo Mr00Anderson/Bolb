@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Logger;
+import com.libgdx.bolb.entities.Player;
 
 public class CustomActor extends Actor {
 
@@ -14,6 +15,7 @@ public class CustomActor extends Actor {
     public int x, y, width, height;
     public float OriginX, OriginY;
     public boolean CenteredOrigin;
+
 
 
     public CustomActor(TextureRegion region, int width, int height, int x, int y) {
@@ -50,17 +52,23 @@ public class CustomActor extends Actor {
 //        y = preferences.getInteger("Y");
     }
 
+    public void pause(boolean b){if(b){
+    CustomActor.this.setVisible(false);}
+    else if (!b){CustomActor.this.setVisible(true);}}
+
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        Color color = getColor();
-        batch.setColor(color);
-        batch.draw(region,
-                getX(), getY(),
-                getOriginX(), getOriginY(),
-                getWidth(), getHeight(),
-                getScaleX(), getScaleY(),
-                getRotation()
-        );
-    }
+
+            Color color = getColor();
+            batch.setColor(color);
+            batch.draw(region,
+                    getX(), getY(),
+                    getOriginX(), getOriginY(),
+                    getWidth(), getHeight(),
+                    getScaleX(), getScaleY(),
+                    getRotation()
+            );
+        }
+
 }
