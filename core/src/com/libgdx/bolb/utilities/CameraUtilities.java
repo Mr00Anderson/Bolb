@@ -21,8 +21,8 @@ public class CameraUtilities {
     public static void InterpolateToTarget(Camera camera, Vector2 target) {
         // a + (b - a) * lerp factor
         Vector3 position = camera.position;
-        position.x = camera.position.x + (target.x - camera.position.x) * .1f;//0.1f to 0.075f
-        position.y = camera.position.y + (target.y - camera.position.y) * .1f;
+        position.x = camera.position.x + (target.x - camera.position.x) * 0.06f;//0.1f to 0.075f
+        position.y = camera.position.y + (target.y - camera.position.y) * 0.06f;
         camera.position.set(position);
         camera.update();
     }

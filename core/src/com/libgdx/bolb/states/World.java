@@ -6,11 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.libgdx.bolb.entities.Player;
 import com.libgdx.bolb.management.states.GameStateManager;
 import com.libgdx.bolb.management.states.State;
+import com.libgdx.bolb.utilities.CameraUtilities;
 import com.libgdx.bolb.utilities.General;
 
 public class World extends State {
@@ -22,7 +24,7 @@ public class World extends State {
     public World(GameStateManager gsm) {
         super(gsm);
         cam = new OrthographicCamera();
-        cam.setToOrtho(false,1600,960);
+        cam.setToOrtho(false, 1600, 960);
         viewport = new ExtendViewport(General.WIDTH, General.HEIGHT);
         stage = new Stage(viewport);
         Player.getPlayer().drawbody(stage);
@@ -32,7 +34,9 @@ public class World extends State {
 
     @Override
     protected void handleInput() {
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){Gdx.app.exit();}
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
+        }
 
     }
 
@@ -51,11 +55,7 @@ public class World extends State {
         Gdx.gl.glClearColor(0.4f, 0.3f, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        cam.position.set(
-                cam.position.x + (Player.getPlayer().getPostionX()- cam.position.x) * 0.075f,
-                cam.position.y + (Player.getPlayer().getPostionY()- cam.position.y) * 0.075f,
-                0);
-
+        CameraUtilities.InterpolateToTarget(cam, new Vector2(Player.getPlayer().getPostionX(), Player.getPlayer().getPostionY()));
         cam.update();
 
         stage.act(Gdx.graphics.getDeltaTime());

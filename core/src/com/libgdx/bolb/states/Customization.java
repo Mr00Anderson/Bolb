@@ -20,6 +20,7 @@ import com.libgdx.bolb.management.states.State;
 import com.libgdx.bolb.utilities.General;
 import com.libgdx.bolb.utilities.UI.SliderButton;
 import com.libgdx.bolb.utilities.scene2d.CustomActor;
+
 import static com.libgdx.bolb.utilities.General.ClearScreen;
 
 public class Customization extends State {
@@ -34,7 +35,6 @@ public class Customization extends State {
 
     public Customization(GameStateManager gsm) {
         super(gsm);
-
 
 
         hueSlide = new SliderButton(35, 75, 0.0f, 360.0f, 0.1f);
@@ -86,10 +86,6 @@ public class Customization extends State {
         });
 
 
-
-
-
-
         Player.getPlayer().drawbody(stage);
         stage.addActor(uiholder);
         stage.addActor(holder);
@@ -111,7 +107,9 @@ public class Customization extends State {
     @Override
     protected void handleInput() {
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){Gdx.app.exit();}
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
+        }
         if (isFinished) {
             dispose();
             HUE = (int) hueSlide.getValue();
